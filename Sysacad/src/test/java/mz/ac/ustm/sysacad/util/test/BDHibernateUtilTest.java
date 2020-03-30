@@ -12,6 +12,7 @@ public class BDHibernateUtilTest {
 		session.close();
 		BDHibernateUtil.getFabricaDeSessoes().close();
 		System.out.println("Conectado a base de dados!");
+		//Acesso a base de dados(Alterado do Git)
 		
 	}
 
