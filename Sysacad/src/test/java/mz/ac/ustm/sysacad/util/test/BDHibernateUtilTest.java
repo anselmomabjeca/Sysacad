@@ -13,6 +13,7 @@ public class BDHibernateUtilTest {
 		BDHibernateUtil.getFabricaDeSessoes().close();
 		System.out.println("Conectado a base de dados!");
 		//Acesso a base de dados(Alterado do Git)
+		//Acesso a base de dados(Alterado do Eclipse)
 		
 	}
 
