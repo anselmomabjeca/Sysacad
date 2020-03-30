@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>SISTEMA DE GESTÃO ACADEMICA USTM</title>
+</h:head>
+<h:body>
+	<p:growl id="mensagem" />
+
+	<h:form id="form">
+
+		<p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
+		<h:graphicImage library="images" name="ustm.png" />
+		<h1 style="margin-top: 0">Pré-inscrição (Sysacad)</h1>
+		<p:tabView>
+			<p:tab title="Dados pessoais">
+				<h:panelGrid id="painel" columns="2" cellspacing="10">
+					<h:panelGroup>
+						<p:outputLabel for="curso" value="Curso " />
+						<h:outputLabel style="color:red" value="*" />
+					</h:panelGroup>
+					<p:selectOneMenu id="curso" value="">
+						<f:selectItem itemLabel="Seleccione o curso" itemValue="" />
+						<f:selectItem itemLabel="Contabilidade" itemValue="Contabilidade" />
+						<f:selectItem itemLabel="Auditoria" itemValue="Auditoria" />
+						<f:selectItem itemLabel="Informatica" itemValue="Informatica" />
+						<f:selectItem itemLabel="Direito" itemValue="Direito" />
+					</p:selectOneMenu>
+
+
+
+					<h:panelGroup>
+						<p:outputLabel for="periodo" value="Periodo " />
+						<h:outputLabel style="color:red" value="*" />
+					</h:panelGroup>
+					<p:selectOneMenu id="periodo" value="">
+						<f:selectItem itemLabel="Seleccione o periodo" itemValue="" />
+						<f:selectItem itemLabel="Manha" itemValue="Manha" />
+						<f:selectItem itemLabel="Tarde" itemValue="Tarde" />
+						<f:selectItem itemLabel="Pos-laboral" itemValue="Pos-laboral" />
+
+					</p:selectOneMenu>
+
+
+					<p:separator />
+					<br />
+					<h:panelGroup>
+						<p:outputLabel style="align:right" value="Apelido:" />
+						<h:outputLabel style="color:red" value="*" />
+					</h:panelGroup>
+					<p:inputText size="20" maxlength="50"
+						value="#{pessoaBean.pessoa.nome}" required="true"
+						requiredMessage="O Campo NOME é obrigatorio" />
+
+					<h:panelGroup>
+						<p:outputLabel value="Nome completo:" />
+						<h:outputLabel style="color:red" value="*" />
+					</h:panelGroup>
+					<p:inputText size="80" maxlength="50"
+						value="#{pessoaBean.pessoa.nome}" required="true"
+						requiredMessage="O Campo NOME é obrigatorio" />
+
+					<h:panelGroup>
+						<p:outputLabel value="Data de nascimento:" />
+						<h:outputLabel style="color:red" value="*" />
+					</h:panelGroup>
+					<p:calendar id="dataCadastro" />
+
+
+
+					<h:panelGroup>
+						<p:outputLabel value="Sexo:" />
+						<h:outputLabel style="color:red" value="*" />
+					</h:panelGroup>
+
+					<p:selectOneRadio id="console" value="#{radioView.console}"
+						unselectable="true">
+						<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+						<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
+
+					</p:selectOneRadio>
+					<p:separator />
+					<br />
+					<h:panelGroup>
+						<p:outputLabel value="" />
+						<!--  h3 style="margin-top:0">Filiação</h3> -->
+						<p:outputLabel value="Nome da mãe:" />
+						<h:outputLabel style="color:red" value="*" />
+					</h:panelGroup>
+
+					<p:inputText size="80" maxlength="30"
+						value="#{pessoaBean.pessoa.bairro}" required="true"
+						requiredMessage="O Campo BAIRRO é obrigatorio" />
+
+
+
+					<h:panelGroup>
+						<p:outputLabel value="Nome do pai:" />
+						<h:outputLabel style="color:red" value="*" />
+					</h:panelGroup>
+					<p:inputText size="80" maxlength="30"
+						value="#{pessoaBean.pessoa.bairro}" required="true"
+						requiredMessage="O Campo BAIRRO é obrigatorio" />
+					<h:panelGroup>
+						<p:outputLabel value="Nacionalidade:" />
+						<h:outputLabel style="color:red" value="*" />
+					</h:panelGroup>
+					<p:inputText size="80" maxlength="10"
+						value="#{pessoaBean.pessoa.cp}" required="true"
+						requiredMessage="O Campo CP é obrigatorio" />
+					<h:panelGroup>
+						<p:outputLabel value="Naturalidade:" />
+						<h:outputLabel style="color:red" value="*" />
+					</h:panelGroup>
+					<p:inputText size="80" maxlength="10"
+						value="#{pessoaBean.pessoa.cp}" required="true"
+						requiredMessage="O Campo CP é obrigatorio" />
+					<p:separator />
+					<br />
+					<h:panelGroup>
+						<p:outputLabel value="Tipo de Documento " />
+						<h:outputLabel style="color:red" value="*" />
+					</h:panelGroup>
+
+					<p:selectOneMenu id="documento" value="">
+						<f:selectItem itemLabel="Seleccione o tipo de documento"
+							itemValue="" />
+						<f:selectItem itemLabel="Bilhete de Identificação"
+							itemValue="Bilhete de Identificacao" />
+						<f:selectItem itemLabel="Passaporte" itemValue="Passaporte" />
+						<f:selectItem itemLabel="Cartão de eleitor"
+							itemValue="Cartao de eleitor" />
+						<f:selectItem itemLabel="Dire" itemValue="Dire" />
+
+					</p:selectOneMenu>
+
+					<h:panelGroup>
+						<p:outputLabel value="Numero de documento:" />
+						<h:outputLabel style="color:red" value="*" />
+					</h:panelGroup>
+					<p:inputText size="80" maxlength="9"
+						value="#{pessoaBean.pessoa.telefone}" required="true"
+						requiredMessage="O Campo TELEFONE é obrigatorio" />
+					<h:panelGroup>
+						<p:outputLabel value="Estado civil:" />
+						<h:outputLabel style="color:red" value="*" />
+					</h:panelGroup>
+
+
+					<p:selectOneRadio id="estado_civil" value="#{radioView.console}"
+						unselectable="true">
+						<f:selectItem itemLabel="Solteiro(a)" itemValue="Solteiro(a)" />
+						<f:selectItem itemLabel="Casado(a)" itemValue="Casado(a)" />
+						<f:selectItem itemLabel="Divorciado(a)" itemValue="Divorciado(a)" />
+						<f:selectItem itemLabel="Viuvo(a)" itemValue="Viuvo(a)" />
+					</p:selectOneRadio>
+					<p:separator />
+					<br />
+					<h:panelGroup>
+						<p:outputLabel value="E-mail:" />
+						<h:outputLabel style="color:red" value="*" />
+					</h:panelGroup>
+					<p:inputText size="80" maxlength="100"
+						value="#{pessoaBean.pessoa.email}" required="true"
+						requiredMessage="O Campo E-MAIL é obrigatorio" />
+					<h:panelGroup>
+						<p:outputLabel value="NUIT:" />
+						<h:outputLabel style="color:red" value="*" />
+					</h:panelGroup>
+					<p:inputText size="80" maxlength="10"
+						value="#{pessoaBean.pessoa.nuit}" required="true"
+						requiredMessage="O Campo NUIT é obrigatorio" />
+					<h:panelGroup>
+						<p:outputLabel value="Contacto:" />
+						<h:outputLabel style="color:red" value="*" />
+					</h:panelGroup>
+					<p:inputText size="80" maxlength="9"
+						value="#{pessoaBean.pessoa.celular}" required="true"
+						requiredMessage="O Campo CELULAR é obrigatorio" />
+					<h:panelGroup>
+						<p:outputLabel value="Contacto alternativo:" />
+						<h:outputLabel style="color:red" value="*" />
+					</h:panelGroup>
+					<p:inputText size="80" maxlength="9"
+						value="#{pessoaBean.pessoa.celular}" required="true"
+						requiredMessage="O Campo CELULAR é obrigatorio" />
+
+
+				</h:panelGrid>
+			</p:tab>
+			<p:tab title="Encarregado de educação">
+				<h:panelGrid id="painel" columns="2" cellspacing="10">
+					<h:panelGroup>
+						<p:outputLabel style="align:right" value="Nome do encarregado:" />
+						<h:outputLabel style="color:red" value="*" />
+
+						<p:inputText size="50" maxlength="50"
+							value="#{pessoaBean.pessoa.nome}" required="true"
+							requiredMessage="O Campo NOME é obrigatorio" />
+					</h:panelGroup>
+					<br />
+					<h:panelGroup>
+						<p:outputLabel value="Grau de parentesco:" />
+						<h:outputLabel style="color:red" value="*" />
+
+						<p:inputText size="38" maxlength="50"
+							value="#{pessoaBean.pessoa.nome}" required="true"
+							requiredMessage="O Campo NOME é obrigatorio" />
+					</h:panelGroup>
+					<br />
+					<h:panelGroup>
+						<p:outputLabel value="Contacto do encarregado:" />
+						<h:outputLabel style="color:red" value="*" />
+
+						<p:inputText size="20" maxlength="100"
+							value="#{pessoaBean.pessoa.rua}" required="true"
+							requiredMessage="O Campo RUA é obrigatorio" />
+
+					</h:panelGroup>
+					<br />
+
+					<h:panelGroup>
+						<p:outputLabel
+							value="Nome da pessoa a contactar em caso de emergência:" />
+						<h:outputLabel style="color:red" value="*" />
+
+						<p:inputText size="50" maxlength="100"
+							value="#{pessoaBean.pessoa.rua}" required="true"
+							requiredMessage="O Campo RUA é obrigatorio" />
+					</h:panelGroup>
+					<br />
+					<h:panelGroup>
+						<p:outputLabel value="Contacto:" />
+						<h:outputLabel style="color:red; align:right" value="*" />
+
+						<p:inputText size="20" maxlength="100"
+							value="#{pessoaBean.pessoa.rua}" required="true"
+							requiredMessage="O Campo RUA é obrigatorio" />
+					</h:panelGroup>
+					<br />
+				</h:panelGrid>
+			</p:tab>
+			<p:tab title="Actualização de Endereço">
+
+				<!-- p:graphicImage name="demo/images/godfather/godfather1.jpg" />  -->
+				<h:panelGrid id="painel" columns="2">
+
+
+					<h:panelGroup>
+						<p:outputLabel value="Rua:" />
+						<h:outputLabel style="color:red" value="*" />
+					</h:panelGroup>
+					<p:inputText size="80" maxlength="100"
+						value="#{pessoaBean.pessoa.rua}" required="true"
+						requiredMessage="O Campo RUA é obrigatorio" />
+
+					<h:panelGroup>
+						<p:outputLabel value="Birro:" />
+						<h:outputLabel style="color:red" value="*" />
+					</h:panelGroup>
+					<p:inputText size="80" maxlength="30"
+						value="#{pessoaBean.pessoa.bairro}" required="true"
+						requiredMessage="O Campo BAIRRO é obrigatorio" />
+					<h:panelGroup>
+						<p:outputLabel value="CP:" />
+						<h:outputLabel style="color:red" value="*" />
+					</h:panelGroup>
+					<p:inputText size="80" maxlength="10"
+						value="#{pessoaBean.pessoa.cp}" required="true"
+						requiredMessage="O Campo CP é obrigatorio" />
+					<h:panelGroup>
+						<p:outputLabel value="Email:" />
+						<h:outputLabel style="color:red" value="*" />
+					</h:panelGroup>
+					<p:inputText size="80" maxlength="100"
+						value="#{pessoaBean.pessoa.email}" required="true"
+						requiredMessage="O Campo EMAIL é obrigatorio" />
+					<h:panelGroup>
+						<p:outputLabel value="NUIT:" />
+						<h:outputLabel style="color:red" value="*" />
+					</h:panelGroup>
+					<p:inputText size="80" maxlength="10"
+						value="#{pessoaBean.pessoa.nuit}" required="true"
+						requiredMessage="O Campo NUIT é obrigatorio" />
+					<h:panelGroup>
+						<p:outputLabel value="BI:" />
+						<h:outputLabel style="color:red" value="*" />
+					</h:panelGroup>
+					<p:inputText size="80" maxlength="13"
+						value="#{pessoaBean.pessoa.bi}" required="true"
+						requiredMessage="O Campo BI é obrigatorio" />
+					<h:panelGroup>
+						<p:outputLabel value="Telefone:" />
+						<h:outputLabel style="color:red" value="*" />
+					</h:panelGroup>
+					<p:inputText size="80" maxlength="9"
+						value="#{pessoaBean.pessoa.telefone}" required="true"
+						requiredMessage="O Campo TELEFONE é obrigatorio" />
+					<h:panelGroup>
+						<p:outputLabel value="Celular:" />
+						<h:outputLabel style="color:red" value="*" />
+					</h:panelGroup>
+					<p:inputText size="80" maxlength="9"
+						value="#{pessoaBean.pessoa.celular}" required="true"
+						requiredMessage="O Campo CELULAR é obrigatorio" />
+					<h:panelGroup>
+						<p:outputLabel value="Cidade:" />
+						<h:outputLabel style="color:red" value="*" />
+					</h:panelGroup>
+					<p:inputText size="80" maxlength="9"
+						value="#{pessoaBean.pessoa.celular}" required="true"
+						requiredMessage="O Campo CELULAR é obrigatorio" />
+
+				</h:panelGrid>
+			</p:tab>
+			<p:tab title="Historial Acadêmico">
+				<h:panelGrid columns="2" cellpadding="10">
+					<!-- p:graphicImage name="demo/images/godfather/godfather1.jpg" />  -->
+					<h:outputText value="Historial Acadêmico." />
+				</h:panelGrid>
+			</p:tab>
+			<p:tab title="Dados Econômicos">
+				<h:panelGrid columns="2" cellpadding="10">
+					<!-- p:graphicImage name="demo/images/godfather/godfather1.jpg" />  -->
+					<h:outputText value="Dados Econômicos." />
+				</h:panelGrid>
+			</p:tab>
+			<p:tab title="Envio de documentação">
+				<h:panelGrid columns="2" cellpadding="10">
+					<h:panelGroup>
+						<p:outputLabel value="1.Certificado de habilitações literárias:" />
+						<h:outputLabel style="color:red" value="*" />
+
+						<p:fileUpload value="#{fileUploadView.file}" mode="simple"
+							skinSimple="false" />
+					</h:panelGroup>
+					<br />
+					<h:panelGroup>
+						<p:outputLabel value="2.Documento de identificação:" />
+						<h:outputLabel style="color:red" value="*" />
+
+						<p:fileUpload value="#{fileUploadView.file}" mode="simple"
+							skinSimple="false" />
+					</h:panelGroup>
+					<br />
+					<h:panelGroup>
+						<p:outputLabel value="3.Comprovativo de depósito:" />
+						<h:outputLabel style="color:red" value="*" />
+
+						<p:fileUpload value="#{fileUploadView.file}" mode="simple"
+							skinSimple="false" />
+					</h:panelGroup>
+
+
+				</h:panelGrid>
+			</p:tab>
+		</p:tabView>
+
+		<p:commandButton value="Sair" styleClass="btn btn-primary" />
+		<p:commandButton value="Gravar" styleClass="btn btn-primary" />
+		<p:commandButton value="Gravar e ir para proxima aba"
+			styleClass="btn btn-primary" />
+
+
+		<p:captcha label="Captcha" />
+
+		<h3 align="center">© Copyright USTM 2020</h3>
+	</h:form>
+</h:body>
+</html>

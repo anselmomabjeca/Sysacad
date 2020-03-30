@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="templates/modelo.xhtml">
+
+	<ui:define name="conteudo">
+		<h:form id="formListagem">
+			<p:panel header="Sysacad (Lista de Provincias)">
+				<p:dataTable id="tabela"
+					emptyMessage="Nenhum registro encontrado :(" paginator="true"
+					value="#{provinciaBean.provincias}" var="provincia" rows="5"
+					paginatorPosition="top">
+					<f:facet name="header">
+						<p:commandButton value="Novo" oncomplete="PF('dialogo').show()"
+							actionListener="#{provinciaBean.novo}"
+							update=":mensagem :formCadastro:painel"
+							styleClass="btn btn-primary">
+							<f:actionListener
+								type="org.omnifaces.eventlistener.ResetInputAjaxActionListener">
+							</f:actionListener>
+						</p:commandButton>
+					</f:facet>
+					<p:column headerText="Nome" sortBy="#{provincia.nome}"
+						filterBy="#{provincia.nome}">
+						<h:outputText value="#{provincia.nome}" />
+					</p:column>
+					<p:column headerText="Sigla" sortBy="#{provincia.sigla}">
+						<h:outputText value="#{provincia.sigla}" />
+					</p:column>
+					<p:column headerText="Opções">
+
+						<p:commandButton icon="ui-icon-pencil"
+							actionListener="#{provinciaBean.editar}"
+							update=":formCadastro:painel" oncomplete="PF('dialogo').show();">
+							<f:attribute name="provinciaSeleccionada" value="#{provincia}"
+								update=":mensagem :formCadastro:painel" />
+							<f:actionListener
+								type="org.omnifaces.eventlistener.ResetInputAjaxActionListener">
+							</f:actionListener>
+						</p:commandButton>
+
+						<p:commandButton icon="ui-icon-trash"
+							actionListener="#{provinciaBean.excluir}"
+							update=":mensagem :formListagem:tabela">
+							<p:confirm header="Confirmação"
+								message="Tens a certeza que quer prosseguir com esta operação?"
+								icon="ui-icon-alert" />
+							<f:attribute name="provinciaSeleccionada" value="#{provincia}" />
+						</p:commandButton>
+
+					</p:column>
+					<f:facet name="footer">
+						<p:outputLabel value="Copyright - USTM 2020" />
+					</f:facet>
+				</p:dataTable>
+				<p:confirmDialog global="true">
+					<p:commandButton value="Sim" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton value="Nao" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</p:confirmDialog>
+
+
+			</p:panel>
+		</h:form>
+
+		<p:dialog header="Cadastro de Cadeiras" widgetVar="dialogo"
+			draggable="false" resizable="false" modal="true" closable="false">
+			<h:form id="formCadastro">
+				<h:panelGrid columns="2" id="painel">
+					<h:panelGroup>
+						<p:outputLabel value="Nome:" />
+						<h:outputLabel style="color:red" value="*" />
+					</h:panelGroup>
+					<p:inputText size="30" maxlength="50"
+						value="#{provinciaBean.provincia.nome}" required="true"
+						requiredMessage="O Campo nome é obrigatorio" />
+					<h:panelGroup>
+						<p:outputLabel value="Sigla:" />
+						<h:outputLabel style="color:red" value="*" />
+					</h:panelGroup>
+					<p:inputText size="10" maxlength="3"
+						value="#{provinciaBean.provincia.sigla}" required="true"
+						requiredMessage="O Campo sigla é obrigatorio" />
+
+				</h:panelGrid>
+				<h:panelGrid columns="2">
+					<p:commandButton value="Gravar"
+						actionListener="#{provinciaBean.salvar}"
+						update=":mensagem :formCadastro:painel :formListagem:tabela" />
+					<p:commandButton value="Cancelar" oncomplete="PF('dialogo').hide()" />
+				</h:panelGrid>
+			</h:form>
+		</p:dialog>
+	</ui:define>
+</ui:composition>
