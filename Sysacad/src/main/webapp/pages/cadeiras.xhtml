@@ -1,21 +1,20 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	template="templates/modelo.xhtml">
+	template="pages/modelo.xhtml">
 
 	<ui:define name="conteudo">
 		<h:form id="formListagem">
-			<p:panel header="Sysacad (Lista de Cadeiras)">
+			<p:panel header="#{mensagem['cabecalho.painel']}">
 				<p:dataTable id="tabela"
-					emptyMessage="Nenhum registro encontrado :(" paginator="true"
+					emptyMessage="#{mensagem['tabela.vazia']}" paginator="true"
 					value="#{cadeiraBean.cadeiras}" var="cadeira" rows="5"
 					paginatorPosition="top">
 					<f:facet name="header">
-						<p:commandButton value="Novo" oncomplete="PF('dialogo').show()"
+						<p:commandButton value="#{mensagem['botao.novo']}" oncomplete="PF('dialogo').show()"
 							actionListener="#{cadeiraBean.novo}"
 							update=":mensagem :formCadastro:painel"
 							styleClass="btn btn-primary">
@@ -24,17 +23,17 @@
 							</f:actionListener>
 						</p:commandButton>
 					</f:facet>
-					<p:column headerText="Nome" sortBy="#{cadeira.nome}"
+					<p:column headerText="#{mensagem['formulario.coluna.nome']}" sortBy="#{cadeira.nome}"
 						filterBy="#{cadeira.nome}">
 						<h:outputText value="#{cadeira.nome}" />
 					</p:column>
-					<p:column headerText="Sigla" sortBy="#{cadeira.sigla}">
+					<p:column headerText="#{mensagem['formulario.coluna.sigla']}" sortBy="#{cadeira.sigla}">
 						<h:outputText value="#{cadeira.sigla}" />
 					</p:column>
-					<p:column headerText="Creditos" sortBy="#{cadeira.sigla}">
+					<p:column headerText="#{mensagem['formulario.coluna.credito']}" sortBy="#{cadeira.sigla}">
 						<h:outputText value="#{cadeira.creditos}" />
 					</p:column>
-					<p:column headerText="Opções">
+					<p:column headerText="#{mensagem['formulario.coluna.opcoes']}">
 
 						<p:commandButton icon="ui-icon-pencil"
 							actionListener="#{cadeiraBean.editar}"
@@ -57,7 +56,7 @@
 
 					</p:column>
 					<f:facet name="footer">
-						<p:outputLabel value="Copyright - USTM 2020" />
+						<p:outputLabel value="#{mensagem['rodape.descricao']}" />
 					</f:facet>
 				</p:dataTable>
 				<p:confirmDialog global="true">
@@ -69,7 +68,7 @@
 			</p:panel>
 		</h:form>
 
-		<p:dialog header="Cadastro de Cadeiras" widgetVar="dialogo"
+		<p:dialog header="#{mensagem['dialog.descricao']} Cadeiras" widgetVar="dialogo"
 			draggable="false" resizable="false" modal="true" closable="false">
 			<h:form id="formCadastro">
 				<h:panelGrid columns="2" id="painel">
@@ -98,10 +97,10 @@
 
 				</h:panelGrid>
 				<h:panelGrid columns="2">
-					<p:commandButton value="Gravar"
+					<p:commandButton value="#{mensagem['botao.gravar']}"
 						actionListener="#{cadeiraBean.salvar}"
 						update=":mensagem :formCadastro:painel :formListagem:tabela" />
-					<p:commandButton value="Cancelar" oncomplete="PF('dialogo').hide()" />
+					<p:commandButton value="#{mensagem['botao.cancelar']}" oncomplete="PF('dialogo').hide()" />
 				</h:panelGrid>
 			</h:form>
 		</p:dialog>

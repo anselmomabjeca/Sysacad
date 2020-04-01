@@ -21,14 +21,12 @@
 		<div id="cabecalho" class="divCabecalho">
 			<h:form id="formModelo">
 				<p:menubar>
-					<p:submenu label="File" icon="pi pi-file">
-						<p:submenu label="New" icon="pi pi-briefcase">
-							<p:menuitem value="Project" url="cadeiras.xhtml" />
-							<p:menuitem value="Other" url="cadeiras.xhtml" />
-						</p:submenu>
-						<p:menuitem value="Open" url="cadeiras.xhtml" />
-						<p:separator />
-						<p:menuitem value="Quit" url="provincias.xhtml" />
+					<p:submenu label="#{mensagem['menu.arquivo']}" icon="pi pi-file">
+							<p:menuitem value="#{mensagem['submenu.novo']}" url="/pages/cadeiras.xhtml" />
+							<p:separator />
+							<p:menuitem value="#{mensagem['submenu.abrir']}" url="pages/provincias.xhtml" />
+							<p:separator />
+							<p:menuitem value="#{mensagem['submenu.sair']}" url="pages/provincias.xhtml" />
 					</p:submenu>
 
 					<p:submenu label="Edit" icon="pi pi-pencil">
@@ -63,7 +61,7 @@
 						icon="pi pi-times" />
 
 					<f:facet name="options">
-						<p:inputText style="margin:1px 10px 1px 1px;" placeholder="Search" />
+						<p:inputText style="margin:1px 10px 1px 1px;" placeholder="Procurar" />
 						<p:commandButton type="button" value="Logout" icon="pi pi-home" />
 					</f:facet>
 				</p:menubar>
@@ -72,7 +70,9 @@
 		<div id="conteudo">
 			<ui:insert name="conteudo" />
 		</div>
-		<div id="rodape"></div>
+		<div id="rodape">
+		
+		</div>
 	</div>
 </h:body>
 </html>
