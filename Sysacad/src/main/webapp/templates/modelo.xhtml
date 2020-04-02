@@ -13,6 +13,9 @@
 <h:body>
 	<p:growl id="mensagem" />
 
+	<h:outputStylesheet name="primeicons/primeicons.css"
+		library="primefaces" />
+
 	<div id="geral">
 		<div id="topo" class="divTopo">
 			<h:graphicImage library="images" name="ustm.png"
@@ -22,19 +25,22 @@
 			<h:form id="formModelo">
 				<p:menubar>
 					<p:submenu label="#{mensagem['menu.arquivo']}" icon="pi pi-file">
-							<p:menuitem value="#{mensagem['submenu.novo']}" url="/pages/cadeiras.xhtml" />
-							<p:separator />
-							<p:menuitem value="#{mensagem['submenu.abrir']}" url="pages/provincias.xhtml" />
-							<p:separator />
-							<p:menuitem value="#{mensagem['submenu.sair']}" url="pages/provincias.xhtml" />
+						<p:menuitem value="#{mensagem['submenu.novo']}"
+							url="/pages/cadeiras.xhtml" />
+						<p:separator />
+						<p:menuitem value="#{mensagem['submenu.abrir']}"
+							url="pages/provincias.xhtml" />
+						<p:separator />
+						<p:menuitem value="" url="pages/provincias.xhtml"
+							style="color:red;" icon="pi pi-power-off" />
 					</p:submenu>
 
-					<p:submenu label="Edit" icon="pi pi-pencil">
+					<p:submenu label="#{mensagem['botao.editar']}" icon="pi pi-pencil">
 						<p:menuitem value="Undo" url="#" icon="pi pi-angle-double-left" />
 						<p:menuitem value="Redo" url="#" icon="pi pi-angle-double-right" />
 					</p:submenu>
 
-					<p:submenu label="Help" icon="pi pi-question">
+					<p:submenu label="#{mensagem.ajuda}" icon="pi pi-question">
 						<p:menuitem value="Contents" url="#" />
 						<p:submenu label="Search" icon="pi pi-search">
 							<p:submenu label="Text">
@@ -44,25 +50,33 @@
 						</p:submenu>
 					</p:submenu>
 
-					<p:submenu label="Actions" icon="pi pi-cog">
+					<p:submenu label="#{mensagem.operacoes}" icon="pi pi-cog">
 						<p:submenu label="Ajax" icon="pi pi-refresh">
 							<p:menuitem value="Save" action="#{menuView.save}"
 								icon="pi pi-save" />
 							<p:menuitem value="Update" action="#{menuView.update}"
-								icon="pi pi-refresh"  />
+								icon="pi pi-refresh" />
 						</p:submenu>
 						<p:submenu label="Non-Ajax" icon="pi pi-clone">
 							<p:menuitem value="Delete" action="#{menuView.delete}"
-								icon="pi pi-times"  ajax="false" />
+								icon="pi pi-times" ajax="false" />
 						</p:submenu>
 					</p:submenu>
 
-					<p:menuitem value="Quit" url="http://www.primefaces.org"
-						icon="pi pi-times" />
+					<p:submenu label="#{mensagem.sair}" icon="pi pi-sign-out">
+						<p:menuitem value="" url="#" style="color:red;"
+							icon="pi pi-power-off" />
+					</p:submenu>
+
 
 					<f:facet name="options">
-						<p:inputText style="margin:1px 10px 1px 1px;" placeholder="Procurar" />
-						<p:commandButton type="button" value="Logout" icon="pi pi-home" />
+						<p:inputText style="margin:1px 10px 1px 1px;"
+							placeholder="#{mensagem.procurar}" />
+						<h:commandButton action="#{language.changeLanguage('pt')}"
+							value="Portugues" image="/resources/images/icon/pt.png" />
+						<h:outputText value="&#160;" />
+						<h:commandButton action="#{language.changeLanguage('en')}"
+							value="English" image="/resources/images/icon/uk.png" />
 					</f:facet>
 				</p:menubar>
 			</h:form>
@@ -70,9 +84,7 @@
 		<div id="conteudo">
 			<ui:insert name="conteudo" />
 		</div>
-		<div id="rodape">
-		
-		</div>
+		<div id="rodape"></div>
 	</div>
 </h:body>
 </html>
